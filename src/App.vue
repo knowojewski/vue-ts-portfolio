@@ -1,32 +1,41 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <div id="app" :class="{ 'dark-mode': getDarkMode }">
+    <NavigationMain />
     <router-view />
+    <button
+      @click="toggleDarkMode"
+      class="btn-dark"
+      style="position: fixed; right: 10px; top: 10px"
+    >
+      Dark mode
+    </button>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { Vue, Component, Watch } from "vue-property-decorator";
+import NavigationMain from "@/components/navigation/NavigationMain.vue";
+import { Getter, Mutation } from "vuex-class";
 
-#nav {
-  padding: 30px;
+@Component({
+  components: {
+    NavigationMain,
+  },
+})
+export default class App extends Vue {
+  @Mutation makeNavSmaller!: any;
+  @Getter getDarkMode!: boolean;
+  @Mutation toggleDarkMode!: void;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  @Watch("$route")
+  onRouteChange() {
+    this.$route.path !== "/"
+      ? this.makeNavSmaller(true)
+      : this.makeNavSmaller(false);
   }
 }
+</script>
+
+<style lang="scss">
+@import "@/scss/components/app";
 </style>
