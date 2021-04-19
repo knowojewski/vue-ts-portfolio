@@ -1,7 +1,33 @@
 @mixin max-width-up($width) {
-    
+    @media (min-width: $width) {
+        @content;
+    }
 }
 
 @mixin max-width-down($width) {
-    
+    @media (min-width: $width) {
+        @content;
+    }
 }
+
+@mixin max-width-between($min, $max) {
+    @media (min-width: $min) and (max-width: $max) {
+        @content;
+    }
+}
+
+@mixin display-flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+// Breakpoints
+
+$xs: 400px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;

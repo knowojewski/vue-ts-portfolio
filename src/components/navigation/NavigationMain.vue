@@ -1,8 +1,8 @@
 <template>
-  <div class="nav-container" :class="{ smaller: getSmallerNav }">
-    <div class="nav-wrapper">
-      <nav class="navigation">
-        <ul class="links main-links">
+  <div class="nav" :class="{ smaller: getSmallerNav }">
+    <div class="nav__container">
+      <nav class="nav__wrapper">
+        <ul class="nav__links nav__links--main">
           <NavigationLink
             v-for="link in mainLinks"
             :key="link.pageName"
@@ -10,7 +10,7 @@
           />
         </ul>
 
-        <ul class="links socials-links">
+        <ul class="nav__links nav__links--socials">
           <NavigationLink
             v-for="link in socialsLinks"
             :key="link.pageName"
@@ -18,7 +18,7 @@
           />
         </ul>
       </nav>
-      <div class="border-line"></div>
+      <div class="nav__border"></div>
     </div>
   </div>
 </template>

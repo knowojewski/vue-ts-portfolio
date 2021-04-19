@@ -1,32 +1,32 @@
 <template>
-  <li class="link-box" :class="{ active: linkProp.active }">
+  <li class="nav__link-box" :class="{ active: linkProp.active }">
     <router-link
       v-if="linkProp.pageType === 'router'"
       :to="linkProp.pageRoute"
-      class="link"
+      class="nav__link"
     >
-      <span class="link-items">
+      <span class="nav__link-items">
         <span
-          class="iconify"
+          class="nav__link-icon iconify"
           data-inline="false"
           :data-icon="linkProp.pageIcon"
         ></span>
-        <span class="link-text">{{ linkProp.pageName }} </span>
+        <span class="nav__link-text">{{ linkProp.pageName }} </span>
       </span>
     </router-link>
     <a
       v-else-if="linkProp.pageType === 'socials'"
       :href="linkProp.pageRoute"
-      class="link"
+      class="nav__link"
       target="_blank"
     >
-      <span class="link-items">
+      <span class="nav__link-items">
         <span
-          class="iconify"
+          class="nav__link-icon iconify"
           data-inline="false"
           :data-icon="linkProp.pageIcon"
         ></span>
-        <span class="link-text">{{ linkProp.pageName }} </span>
+        <span class="nav__link-text">{{ linkProp.pageName }} </span>
       </span>
     </a>
   </li>
