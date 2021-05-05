@@ -12,6 +12,10 @@
     min-height: 100vh;
     background-color: $black-color;
     transition: background-color .5s;
+    overflow-x: hidden;
+    @include max-width-up($sm) {
+        background-color: $white-color;
+    }
 }
 
 #app.dark-mode {

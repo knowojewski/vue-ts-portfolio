@@ -7,31 +7,287 @@
     overflow-y: auto;
     z-index: 90;
     transition: left 1s;
+    @include max-width-up($sm) {
+        left: 0;
+        width: auto;
+        overflow: visible;
+    }
 
     &__container {
         width: 100%;
         height: 100%;
+        @include max-width-up($sm) {
+            width: 4000px;
+            height: 1000px;
+            position: absolute;
+            left: -3740px;
+            transform: skew(27deg);
+            z-index: 10;
+            transition: left .8s, right .8s;
+            @include max-width-up($xl) {
+                transform: skew(36.5deg);
+            }
+
+            &::after {
+                display: none;
+                content: '';
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                background-color: $black-color;
+                top: 0;
+                right: 0;
+                @include max-width-up($sm) {
+                    display: block;
+                }
+            }
+        }
+        @include max-width-up($lg) {
+            left: unset;
+            right: -45vw;
+        }
+    }
+
+    &.smaller {
+        .nav__container {
+            @include max-width-up($lg) {
+                left: unset;
+                right: -30vw;
+            }
+            @include max-width-up($xl) {
+                right: -34vw;
+            }
+            @include max-width-up($xxl) {
+                right: -28vw;
+            }
+        }
     }
     
     &__wrapper {
         position: relative;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         @include display-flex(column, space-between, center);
-        
-        &::before,
-        &::after {
-    
+        @include max-width-up($sm) {
+            align-items: flex-end;
         }
     }
 
     &__border {
-
+        display: none;
+        position: absolute;
+        height: 100%;
+        width: 12px;
+        background-color: $black-color;
+        top: 0;
+        right: -2px; 
+        z-index: 11;
+        @include max-width-up($sm) {
+            display: block;
+        }
     }
 
     &__links {
         list-style: none;
         width: 100%;
+        @include max-width-up($sm) {
+            width: 400px;
+            margin-right: -136px;
+            transform: skew(-27deg);
+            list-style: none;
+        }
+        @include max-width-up($xl) {
+            transform: skew(-36.5deg);
+        }
+
+        &--main {
+            .nav__link-box:nth-of-type(1) {
+                @include max-width-up($sm) {
+                    margin-left: -124px;
+                }
+                @include max-width-up($xl) {
+                    margin-left: -144px;
+                }
+
+                &:hover,
+                &.active { 
+                    @include max-width-up($md) {
+                        margin-left: -64px; 
+                    }
+                    @include max-width-up($xl) {
+                        margin-left: -84px;
+                    }
+                }
+            }
+            .nav__link-box:nth-of-type(2) {
+                @include max-width-up($sm) {
+                    margin-left: -93px;
+                }
+
+                &:hover,
+                &.active { 
+                    @include max-width-up($md) {
+                        margin-left: -33px; 
+                    }
+                    @include max-width-up($xl) {
+                        margin-left: -40px;
+                    }
+                }
+            }
+
+            .nav__link-box:nth-of-type(3) {
+                @include max-width-up($sm) {
+                    margin-left: -62px;
+                }
+                @include max-width-up($xl) {
+                    margin-left: -54px;
+                }
+
+                &:hover,
+                &.active { 
+                    @include max-width-up($md) {
+                        margin-left: -2px; 
+                    }
+                    @include max-width-up($xl) {
+                        margin-left: 4px;
+                    }
+                }
+            }
+
+            .nav__link-box:nth-of-type(4) {
+                @include max-width-up($sm) {
+                    margin-left: -31px;
+                }
+                @include max-width-up($xl) {
+                    margin-left: -10px;
+                }
+
+                &:hover,
+                &.active { 
+                    @include max-width-up($md) {
+                        margin-left: 29px; 
+                    }
+                    @include max-width-up($xl) {
+                        margin-left: 48px;
+                    }
+                }
+            }
+
+            .nav__link-box:nth-of-type(5) {
+                @include max-width-up($sm) {
+                    margin-left: 0px;
+                }
+                @include max-width-up($xl) {
+                    margin-left: 34px;
+                }
+
+                &:hover,
+                &.active { 
+                    @include max-width-up($md) {
+                        margin-left: 40px;
+                    }
+                    @include max-width-up($xl) {
+                        margin-left: 92px;
+                    }
+                }
+            }
+        }
+
+        &--socials {
+            @include max-width-up($sm) {
+                bottom: 0;
+                right: -188px;
+            }
+
+            .nav__link-icon {
+                font-size: 32px;
+            }
+            
+            .nav__link-box:nth-of-type(1) {
+                @include max-width-up($sm) {
+                    margin-left: -88px;
+                }
+
+                &:hover,
+                &.active { 
+                    @include max-width-up($sm) {
+                        margin-left: -68px;
+                    }
+                    @include max-width-up($md) {
+                        margin-left: -48px; 
+                    }
+                }
+
+                .nav__link::after {
+                    background-color: #3B5998;
+                }
+            } 
+
+            .nav__link-box:nth-of-type(2) { 
+                @include max-width-up($sm) {
+                    margin-left: -66px;
+                }
+                @include max-width-up($xl) {
+                    margin-left: -54px;
+                }
+
+                &:hover,
+                &.active { 
+                    @include max-width-up($sm) {
+                        margin-left: -46px;
+                    }
+                    @include max-width-up($md) {
+                        margin-left: -26px; 
+                    }
+                    @include max-width-up($xl) {
+                        margin-left: -4px;
+                    }
+                }
+
+                .nav__link::after {
+                    background-color: #c9510c;
+                }
+            }
+            .nav__link-box:nth-of-type(3) {
+                @include max-width-up($sm) {
+                    margin-left: -28px;
+                }
+                @include max-width-up($xl) {
+                    margin-left: -8px;
+                }
+
+                &:hover,
+                &.active { 
+                    @include max-width-up($sm) {
+                        margin-left: -8px;
+                    }
+                    @include max-width-up($md) {
+                        margin-left: 12px; 
+                    }
+                    @include max-width-up($xl) {
+                        margin-left: 40px;
+                    }
+                }
+
+                .nav__link::after {
+                    background-color: #0072B1;
+                }
+
+                .nav__link-icon {
+                    margin-right: 1px;
+                    font-size: 29px;
+                }
+            } 
+
+            .nav__link-text {
+                display: none;
+                margin-top: 4px;
+
+                @include max-width-up($sm) {
+                    display: inline;
+                }
+            }
+        }
     }
 
     &__link-box {
@@ -40,20 +296,75 @@
         height: 60px;
         width: 100%;
         transition: margin-left .5s .3s, z-index .5s;
+
+        &:hover,
+        &.active {
+            .nav__link {
+                &-icon { 
+                    color: #EDEEE9;
+                }
+    
+                &-text {
+                    color: #EDEEE9;
+                    opacity: 1;
+                    max-height: 40px;
+                }
+
+                &::after {
+                    margin-left: 0;
+                }
+            }
+        }
+    
     }
 
     &__link {
+        position: relative;
         display: block;
         height: 100%;
         width: 100%;
         text-decoration: none;
         color: $white-color;
+        z-index: 1;
+        @include max-width-up($sm) {
+            @include display-flex(column, center, flex-end);
+            padding-right: 20px;
+            color: $black-color;
+        }
+        @include max-width-up($xl) {
+            padding-right: 26px;
+        }
+
+        &::after {
+            content: '';
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: $black-color;
+            transform: skew(27deg);
+            margin-left: -100%;
+            z-index: 0;
+            transition: margin .5s;
+            @include max-width-up($sm) {
+                display: block;
+            }
+            @include max-width-up($xl) {
+                transform: skew(36.5deg);
+            }
+        }
     }
 
     &__link-items {
         width: 100%;
         height: 100%;
         @include display-flex(column, center, center);
+        @include max-width-up($sm) {
+            width: auto;
+            height: auto;
+        }
     }
 
     &__link-icon { 
@@ -65,265 +376,11 @@
 
     &__link-text {
         text-transform: uppercase;
-        font-size: 12px;
+        font-size: 10px;
         position: relative;
         opacity: 0;
-        line-height: 0;
+        max-height: 0;
         z-index: 2;
-        transition: color .5s .2s, opacity .5s .2s, line-height .5s .2s;
+        transition: color .5s .2s, opacity .5s .2s, max-height .5s .2s;
     }
 }
-
-// .nav-container {
-//     position: fixed;
-//     top: 0;
-//     left: 60vw;
-//     height: 100vh;
-//     transform-style: preserve-3d;
-//     z-index: 90;
-//     transition: left 1s;
-
-//     .nav-wrapper::before, 
-//     .nav-wrapper::after {
-//         content: '';
-//         position: absolute;
-//         height: 100%;
-//         width: 100%;
-//         background: #000;
-//         right: 0;
-//         z-index: 10;
-//     }
-
-//     .nav-wrapper::before { top: -99%; }
-//     .nav-wrapper::after { 
-//         height: 200%;
-//         bottom: -50%; 
-//     }
-    
-//     .nav-wrapper {
-//         width: 1000px;
-//         height: 100vh;
-//         position: absolute;
-//         right: 330px;
-//         top: 290px;
-//         transform:  rotate(-36.5deg);
-//         background-color: #000;
-//         z-index: 10;
-
-//         .border-line {
-//             position: absolute;
-//             height: 300%;
-//             width: 12px;
-//             background-color: #000;
-//             top: 50%;
-//             right: 0;
-//             transform: translate(2px, -50%);
-//             z-index: 11;
-//         }
-
-//         .navigation {
-//             position: relative;
-//             width: 100%;
-//             height: 100%;
-
-//             .links {
-//                 position: absolute;
-//                 width: 400px;
-//                 right: 0;
-//                 transform: rotate(36.5deg);
-//                 list-style: none;
-
-//                 .link-box {
-//                     display: block;
-//                     position: relative;
-//                     height: 60px;
-//                     width: 100%;
-//                     margin-top: -1px;
-//                     transition: margin-left .5s .3s, z-index .5s;
-
-//                     .link {
-                        // display: flex;
-                        // flex-direction: column;
-                        // align-items: flex-end;
-                        // justify-content: center;
-                        // height: 100%;
-                        // width: 100%;
-                        // padding-right: 60px;
-                        // text-decoration: none;
-                        // color: #000;
-
-//                         &-items {
-//                             display: flex;
-//                             flex-direction: column;
-//                             justify-content: center;
-//                             align-items: center;
-//                         }
-
-//                         .iconify { 
-//                             position: relative;
-//                             font-size: 40px; 
-//                             z-index: 2;
-//                             transition: color .5s .3s;
-//                         }
-
-//                         &-text {
-//                             text-transform: uppercase;
-//                             font-size: 12px;
-//                             position: relative;
-//                             opacity: 0;
-//                             line-height: 0;
-//                             z-index: 2;
-//                             transition: color .5s .2s, opacity .5s .2s, line-height .5s .2s;
-//                         }
-
-//                         &::after {
-//                             content: '';
-//                             background-color: #EDEEE9;
-//                             height: calc(100% + 2px);
-//                             width: 50px;
-//                             right: -4px;
-//                             top: 0;
-//                             position: absolute;
-//                             transform: translate(1px, -1px);
-//                             clip-path: polygon(0 0, 100% 0, 100% 100%, 92% 100%);
-//                             z-index: 2;
-//                         }
-
-//                         &::before {
-//                             content: '';
-//                             background-color: #000;
-//                             height: 100%;
-//                             width: 100%;
-//                             left: 0;
-//                             top: 0;
-//                             position: absolute;
-//                             margin-left: -100%;
-//                             clip-path: polygon(0 0, 89% 0%, 100% 100%, 0% 100%);
-//                             transition: margin .5s;
-//                             z-index: 1;
-//                         }
-//                     }
-//                 }
-//             }
-
-//             .main-links {
-//                 top: -68px;
-//                 right: -208px;
-
-//                 .link-box:nth-of-type(1) {
-//                     margin-left: -176px;
-//                     z-index: 1;
-
-//                     .link {
-//                         .iconify { font-size: 44px; }
-//                     }
-
-//                     &:hover,
-//                     &.active { margin-left: -96px; }
-//                 }
-//                 .link-box:nth-of-type(2) {
-//                     margin-left: -132px;
-//                     z-index: 2;
-
-//                     &:hover,
-//                     &.active { margin-left: -52px; }
-//                 }
-
-//                 .link-box:nth-of-type(3) {
-//                     margin-left: -88px;
-//                     z-index: 3;
-
-//                     .link {
-//                         padding-right: 54px;
-
-//                         .iconify { font-size: 45px; }
-//                     }
-
-//                     &:hover,
-//                     &.active { margin-left: -8px; }
-//                 }
-
-//                 .link-box:nth-of-type(4) {
-//                     margin-left: -44px;
-//                     z-index: 4;
-
-//                     &:hover,
-//                     &.active { margin-left: 36px; }
-//                 }
-
-//                 .link-box:nth-of-type(5) {
-//                     margin-left: -0px;
-//                     z-index: 5;
-
-//                     &:hover,
-//                     &.active { margin-left: 80px; }
-//                 }
-//             }
-
-//             .socials-links {
-//                 bottom: -98px;
-//                 right: -188px;
-
-//                 .link-box .link .link-items .iconify { margin-bottom: 5px; }
-
-//                 .link-box:nth-of-type(1) {
-//                     margin-left: -95px;
-//                     z-index: 1;
-
-//                     .link {
-//                         .iconify { font-size: 36px; }
-//                     }
-
-//                     &:hover { margin-left: -15px; }
-//                 }
-//                 .link-box:nth-of-type(2) {
-//                     margin-left: -62px;
-//                     z-index: 2;
-
-//                     .link {
-//                         .iconify { font-size: 36px; }
-//                     }
-
-//                     &:hover { margin-left: 18px; }
-//                 }
-//                 .link-box:nth-of-type(3) {
-//                     margin-left: -12px;
-//                     z-index: 3;
-
-//                     .link {
-//                         .iconify { font-size: 32px; }
-//                     }
-
-//                     &:hover { margin-left: 68px; }
-//                 }
-//             }
-
-//             .links {
-//                 .link-box {
-//                     &:hover,
-//                     &.active {
-//                         z-index: 10;
-    
-//                         .link {
-//                             .iconify { 
-//                                 color: #EDEEE9;
-//                             }
-    
-//                             &-text {
-//                                 color: #EDEEE9;
-//                                 opacity: 1;
-//                                 line-height: 1;
-//                             }
-
-//                             &::before {
-//                                 margin-left: 0;
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// .nav-container.smaller { left: 45vw; }

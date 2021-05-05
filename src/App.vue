@@ -2,13 +2,6 @@
   <div id="app" :class="{ 'dark-mode': getDarkMode }">
     <NavigationMain />
     <router-view />
-    <button
-      @click="toggleDarkMode"
-      class="btn-dark"
-      style="position: fixed; right: 10px; top: 10px"
-    >
-      Dark mode
-    </button>
   </div>
 </template>
 
